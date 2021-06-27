@@ -1,0 +1,50 @@
+
+<!-- begin snippet: js hide: false console: false babel: null -->
+
+<!-- language: lang-html -->
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <style type="text/css">
+        #slider { margin: 10px; }
+      </style>
+      <script>
+          var a=0;
+          $(document).ready(function () {
+              $("#slider").slider(
+              {
+                  range: true,
+                  min: 0,
+                  max: 200,
+                  step: 1,
+                  values: [10, 50],
+                  change: showValue
+              });
+              $("#update").click(function () {
+                  $("#slider").slider("option", "values", [$("#seekTo1").val(), $("#seekTo2").val()]);
+
+              });
+              function showValue(event, ui) {
+                  $("#val").html(ui.values[0] + " - " + ui.values[1]);
+                  a=ui.values[1];
+              }
+          });
+      </script>
+    </head>
+    <body style="font-size:62.5%;">
+        <h2> Choose price range</h2>
+    <div id="slider"></div>
+        <input id="update" type="button" value="Update" />
+    Current Value : <span id="val">0 - 50</span>
+    <div id="c">
+       
+    </div>
+    
+    </body>
+    </html>
+
+<!-- end snippet -->
